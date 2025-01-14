@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ mobileMenuOpen: false }" class="scroll-smooth">
+<html lang="en" x-data="{ mobileMenuOpen: false, hasScrolled: false }" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,8 +8,8 @@
   <!-- Favicon (Optional) -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <!-- Tailwind CSS (v3+ or latest) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- External CSS (compiled Tailwind) -->
+  <link rel="stylesheet" href="dist/output.css" />
 
   <!-- Alpine.js (Optional for mobile nav toggling) -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -19,34 +19,49 @@
 
   <!-- External CSS -->
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Inline Alpine.js for Sticky Header on Scroll (Optional) -->
+  <script>
+    document.addEventListener("alpine:init", () => {
+      Alpine.data('scrollHandler', () => ({
+        init() {
+          window.addEventListener('scroll', () => {
+            this.hasScrolled = window.scrollY > 10;
+          });
+        }
+      }));
+    });
+  </script>
 </head>
-<body class="font-sans text-gray-900 bg-white">
+<body class="font-sans text-gray-900 bg-white" x-data="scrollHandler" x-init="init()">
 
   <!-- ========== NAVIGATION ========== -->
   <nav 
-    class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-gray-200" 
+    class="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-200 transition-shadow duration-300"
+    :class="hasScrolled ? 'shadow-lg' : 'shadow-sm'"
   >
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <!-- Logo / Branding -->
       <div class="flex items-center space-x-2">
         <!-- Placeholder Logo -->
         <img 
-          src="images/ip-logo-placeholder.png" 
+          src="logos/design_3.svg" 
           alt="Island Party Logo" 
           class="h-10 w-auto object-cover"
         />
-        <span class="text-xl font-bold text-teal-700">
+        <span class="text-xl font-bold text-teal-700 tracking-wide">
           Island Party 2025
         </span>
       </div>
 
       <!-- Hamburger Menu (Mobile) -->
       <button 
-        class="md:hidden text-teal-700" 
+        class="md:hidden text-teal-700 focus:outline-none" 
         @click="mobileMenuOpen = !mobileMenuOpen"
         aria-label="Toggle mobile menu"
       >
-        <i :class="mobileMenuOpen ? 'fa fa-times' : 'fa fa-bars'"></i>
+        <!-- Use Font Awesome 5 (fas) or 6 (fa-solid) icons -->
+        <i :class="mobileMenuOpen ? 'fas fa-times text-2xl' : 'fas fa-bars text-2xl'"></i>
       </button>
 
       <!-- Desktop Nav Links -->
@@ -80,36 +95,49 @@
 
   <!-- ========== HERO SECTION ========== -->
   <section 
-    class="relative h-[80vh] md:h-screen flex items-center justify-center bg-fixed bg-center bg-cover" 
-    style="background-image: url('images/ip-hero-placeholder.jpg');"
+    class="relative h-[80vh] md:h-screen flex items-center justify-center bg-fixed bg-center bg-cover overflow-hidden" 
+    style="background-image: url('images/hero.jpg');"
   >
+    <!-- Overlay -->
     <div class="absolute inset-0 bg-teal-900 bg-opacity-40"></div>
+    <!-- Hero Content -->
     <div class="relative z-10 text-center text-white px-6 max-w-2xl mx-auto">
-      <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg mb-4">
+      <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg mb-4 animate-fadeInUp">
         TAMU Island Party 2025
       </h1>
-      <p class="text-lg md:text-2xl mb-8 leading-relaxed">
+      <p class="text-lg md:text-2xl mb-8 leading-relaxed animate-fadeInUp delay-100">
         A family-friendly music concert with top bands, food trucks, vendors, and much more!
       </p>
-      <a 
-        href="#tickets" 
-        class="btn-primary inline-block mt-2"
-      >
-        Get Tickets
-      </a>
-      <a 
-        href="#donate" 
-        class="btn-secondary inline-block mt-2 ml-2"
-      >
-        Donate Now
-      </a>
+      <div class="animate-fadeInUp delay-200">
+        <a 
+          href="#tickets" 
+          class="btn-primary inline-block mt-2"
+        >
+          Get Tickets
+        </a>
+        <a 
+          href="#donate" 
+          class="btn-secondary inline-block mt-2 ml-2"
+        >
+          Donate Now
+        </a>
+      </div>
+    </div>
+    <!-- Decorative Floating Element (Optional) -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
+      <svg class="w-screen h-auto" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,0V100H1440V0C1200,60,900,60,720,40,510,20,240,20,0,60Z"></path>
+      </svg>
     </div>
   </section>
   <!-- ========== END HERO SECTION ========== -->
 
   <!-- ========== ABOUT ISLAND PARTY ========== -->
-  <section id="about" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
+  <section id="about" class="relative pt-16 bg-white">
+    <!-- Decorative Top Divider (Optional) -->
+    <div class="absolute top-0 w-full h-16 bg-white"></div>
+
+    <div class="max-w-7xl mx-auto px-4 pb-16">
       <div class="text-center mb-12">
         <h2 class="section-title">About Island Party</h2>
         <p class="section-subtitle max-w-3xl mx-auto">
@@ -126,18 +154,18 @@
             This year, Island Party will be held on <strong>March 29th, 2025</strong>, and we are currently in the early processes of garnering sponsors.
           </p>
           <div class="flex space-x-4 mt-6">
-            <a href="https://instagram.com/aggieislandparty" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl">
+            <a href="https://instagram.com/aggieislandparty" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl transition-colors">
               <i class="fab fa-instagram"></i>
             </a>
             <!-- If a Facebook link becomes available -->
-            <!-- <a href="#" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl">
+            <!-- <a href="#" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl transition-colors">
               <i class="fab fa-facebook-f"></i>
             </a> -->
           </div>
         </div>
-        <div class="order-1 md:order-2">
+        <div class="order-1 md:order-2 transform hover:scale-105 transition-transform duration-300">
           <img 
-            src="images/about-ip-placeholder.jpg" 
+            src="images/about.jpg" 
             alt="Island Party attendees" 
             class="rounded-lg shadow-lg w-full"
           />
@@ -148,7 +176,7 @@
   <!-- ========== END ABOUT ISLAND PARTY ========== -->
 
   <!-- ========== LIVING WATER INTERNATIONAL ========== -->
-  <section id="lwi" class="py-16 bg-gradient-to-r from-teal-50 to-white">
+  <section id="lwi" class="py-16 bg-gradient-to-r from-teal-50 to-white relative">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="section-title">Our Mission Partner</h2>
@@ -158,9 +186,9 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
+        <div class="transform hover:scale-105 transition-transform duration-300">
           <img 
-            src="images/lwi-partner-placeholder.jpg" 
+            src="images/fundraising.jpg" 
             alt="Living Water International" 
             class="rounded-lg shadow-lg w-full"
           />
@@ -192,7 +220,7 @@
   <!-- ========== END LWI SECTION ========== -->
 
   <!-- ========== DONATE SECTION ========== -->
-  <section id="donate" class="py-16 bg-white">
+  <section id="donate" class="py-16 bg-white relative">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="section-title">Support Island Party 2025</h2>
@@ -202,9 +230,9 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
+        <div class="transform hover:scale-105 transition-transform duration-300">
           <img 
-            src="images/donate-placeholder.jpg" 
+            src="images/hero.jpg" 
             alt="Donate to Island Party" 
             class="rounded-lg shadow-lg w-full"
           />
@@ -227,7 +255,7 @@
   <!-- ========== END DONATE SECTION ========== -->
 
   <!-- ========== SPONSORS SECTION ========== -->
-  <section id="sponsors" class="py-16 bg-gradient-to-r from-white to-teal-50">
+  <section id="sponsors" class="py-16 bg-gradient-to-r from-white to-teal-50 relative">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="section-title">Thank You to Our Sponsors</h2>
@@ -239,41 +267,38 @@
       <!-- Placeholder for sponsor logos -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
         <!-- Replace with real sponsor logos/names once available -->
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
           <img 
-            src="images/sponsor-logo1-placeholder.png" 
+            src="images/sponsor2.svg" 
             alt="Sponsor 1" 
             class="w-32 h-32 object-contain"
           />
           <span class="mt-2 text-gray-700 text-sm">Sponsor Name #1</span>
         </div>
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
           <img 
-            src="images/sponsor-logo2-placeholder.png" 
+            src="images/sponsor2.svg" 
             alt="Sponsor 2" 
             class="w-32 h-32 object-contain"
           />
           <span class="mt-2 text-gray-700 text-sm">Sponsor Name #2</span>
         </div>
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
           <img 
-            src="images/sponsor-logo3-placeholder.png" 
+            src="images/sponsor2.svg" 
             alt="Sponsor 3" 
             class="w-32 h-32 object-contain"
           />
           <span class="mt-2 text-gray-700 text-sm">Sponsor Name #3</span>
         </div>
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
           <img 
-            src="images/sponsor-logo4-placeholder.png" 
+            src="images/sponsor2.svg" 
             alt="Sponsor 4" 
             class="w-32 h-32 object-contain"
           />
           <span class="mt-2 text-gray-700 text-sm">Sponsor Name #4</span>
         </div>
-
-        <!-- Additional sponsors or placeholders as needed -->
-        <!-- e.g. more grid items... -->
       </div>
 
       <div class="mt-12 text-center">
@@ -303,27 +328,27 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
         <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md">
           <img 
-            src="images/lineup-placeholder1.jpg" 
+            src="images/artist5.avif" 
             alt="Band 1" 
-            class="w-full h-48 object-cover mb-4 rounded"
+            class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform"
           />
           <h3 class="text-xl font-semibold text-teal-700">Headliner TBA</h3>
           <p class="text-gray-700 mt-2">Check back soon for updates!</p>
         </div>
         <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md">
           <img 
-            src="images/lineup-placeholder2.jpg" 
+            src="images/artist5.avif" 
             alt="Band 2" 
-            class="w-full h-48 object-cover mb-4 rounded"
+            class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform"
           />
           <h3 class="text-xl font-semibold text-teal-700">Supporting Act</h3>
           <p class="text-gray-700 mt-2">Details coming soon.</p>
         </div>
         <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md">
           <img 
-            src="images/lineup-placeholder3.jpg" 
+            src="images/artist5.avif" 
             alt="Band 3" 
-            class="w-full h-48 object-cover mb-4 rounded"
+            class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform"
           />
           <h3 class="text-xl font-semibold text-teal-700">Opening Act</h3>
           <p class="text-gray-700 mt-2">Stay tuned for official announcement.</p>
@@ -350,14 +375,14 @@
           <img 
             src="images/ticket-placeholder.jpg" 
             alt="Ticket Placeholder" 
-            class="w-full h-48 object-cover mb-4 rounded"
+            class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform duration-300"
           />
           <h3 class="text-xl font-bold text-teal-700 mb-2">General Admission</h3>
           <p class="text-gray-700">Placeholder text for pricing.</p>
         </div>
         <!-- More ticket tiers as needed... -->
-
       </div>
+
       <div class="mt-8 text-center">
         <a 
           href="#" 
@@ -374,7 +399,6 @@
   <footer class="bg-teal-900 text-teal-100 py-10 mt-16">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
         <!-- About -->
         <div>
           <h4 class="text-xl font-semibold mb-4">About Island Party</h4>
@@ -382,7 +406,6 @@
             TAMU Island Party is an annual music festival hosted by Beta Upsilon Chi, dedicated to fostering community and supporting charitable causes.
           </p>
         </div>
-
         <!-- Quick Links -->
         <div>
           <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
@@ -395,7 +418,6 @@
             <li><a href="#tickets" class="hover:underline">Tickets</a></li>
           </ul>
         </div>
-
         <!-- Contact Info -->
         <div>
           <h4 class="text-xl font-semibold mb-4">Contact Us</h4>

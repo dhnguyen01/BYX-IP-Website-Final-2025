@@ -1,0 +1,17 @@
+{
+  "name": "byx-ip-website-final-2025",
+  "version": "1.0.0",
+  "main": "scripts.js",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./input.css -o ./dist/output.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.0",
+    "tailwindcss": "^3.4.17"
+  }
+}
