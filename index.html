@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ mobileMenuOpen: false }" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TAMU Island Party 2025</title>
+
+  <!-- Favicon (Optional) -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Tailwind CSS (v3+ or latest) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine.js (Optional for mobile nav toggling) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Font Awesome (for icons) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav 
+    class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-gray-200" 
+  >
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo / Branding -->
+      <div class="flex items-center space-x-2">
+        <!-- Placeholder Logo -->
+        <img 
+          src="images/ip-logo-placeholder.png" 
+          alt="Island Party Logo" 
+          class="h-10 w-auto object-cover"
+        />
+        <span class="text-xl font-bold text-teal-700">
+          Island Party 2025
+        </span>
+      </div>
+
+      <!-- Hamburger Menu (Mobile) -->
+      <button 
+        class="md:hidden text-teal-700" 
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        aria-label="Toggle mobile menu"
+      >
+        <i :class="mobileMenuOpen ? 'fa fa-times' : 'fa fa-bars'"></i>
+      </button>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex space-x-8 font-medium">
+        <a href="#about" class="nav-link">About Island Party</a>
+        <a href="#lwi" class="nav-link">Living Water Int’l</a>
+        <a href="#donate" class="nav-link">Donate</a>
+        <a href="#sponsors" class="nav-link">Sponsors</a>
+        <a href="#lineup" class="nav-link">Lineup</a>
+        <a href="#tickets" class="nav-link">Tickets</a>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div 
+      class="md:hidden bg-white border-t border-gray-200" 
+      x-show="mobileMenuOpen"
+      @click.outside="mobileMenuOpen = false"
+      x-transition.origin.top
+    >
+      <div class="px-4 py-4 flex flex-col space-y-2 font-medium">
+        <a href="#about" class="nav-link" @click="mobileMenuOpen = false">About Island Party</a>
+        <a href="#lwi" class="nav-link" @click="mobileMenuOpen = false">Living Water Int’l</a>
+        <a href="#donate" class="nav-link" @click="mobileMenuOpen = false">Donate</a>
+        <a href="#sponsors" class="nav-link" @click="mobileMenuOpen = false">Sponsors</a>
+        <a href="#lineup" class="nav-link" @click="mobileMenuOpen = false">Lineup</a>
+        <a href="#tickets" class="nav-link" @click="mobileMenuOpen = false">Tickets</a>
+      </div>
+    </div>
+  </nav>
+  <!-- ========== END NAVIGATION ========== -->
+
+  <!-- ========== HERO SECTION ========== -->
+  <section 
+    class="relative h-[80vh] md:h-screen flex items-center justify-center bg-fixed bg-center bg-cover" 
+    style="background-image: url('images/ip-hero-placeholder.jpg');"
+  >
+    <div class="absolute inset-0 bg-teal-900 bg-opacity-40"></div>
+    <div class="relative z-10 text-center text-white px-6 max-w-2xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg mb-4">
+        TAMU Island Party 2025
+      </h1>
+      <p class="text-lg md:text-2xl mb-8 leading-relaxed">
+        A family-friendly music concert with top bands, food trucks, vendors, and much more!
+      </p>
+      <a 
+        href="#tickets" 
+        class="btn-primary inline-block mt-2"
+      >
+        Get Tickets
+      </a>
+      <a 
+        href="#donate" 
+        class="btn-secondary inline-block mt-2 ml-2"
+      >
+        Donate Now
+      </a>
+    </div>
+  </section>
+  <!-- ========== END HERO SECTION ========== -->
+
+  <!-- ========== ABOUT ISLAND PARTY ========== -->
+  <section id="about" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="section-title">About Island Party</h2>
+        <p class="section-subtitle max-w-3xl mx-auto">
+          Island Party is a family-friendly music concert including some of the nation’s most popular bands, held locally at Wolf Pen Creek Amphitheater.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="order-2 md:order-1 space-y-4">
+          <p class="text-gray-700 leading-relaxed">
+            In addition, there are food trucks, vendors, a speaker that shares the gospel, and plenty of family-friendly activities for the whole community to enjoy. Every year, Island Party attracts thousands of attendees from across the state and makes a lasting impact through local and international philanthropy. It serves to connect the community as a whole, hosting college students and permanent residents alike.
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            This year, Island Party will be held on <strong>March 29th, 2025</strong>, and we are currently in the early processes of garnering sponsors.
+          </p>
+          <div class="flex space-x-4 mt-6">
+            <a href="https://instagram.com/aggieislandparty" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <!-- If a Facebook link becomes available -->
+            <!-- <a href="#" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl">
+              <i class="fab fa-facebook-f"></i>
+            </a> -->
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <img 
+            src="images/about-ip-placeholder.jpg" 
+            alt="Island Party attendees" 
+            class="rounded-lg shadow-lg w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ========== END ABOUT ISLAND PARTY ========== -->
+
+  <!-- ========== LIVING WATER INTERNATIONAL ========== -->
+  <section id="lwi" class="py-16 bg-gradient-to-r from-teal-50 to-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Our Mission Partner</h2>
+        <p class="section-subtitle max-w-3xl mx-auto">
+          Living Water International exists to demonstrate the love of God by helping communities acquire desperately needed clean water, and to experience “living water” — the gospel of Jesus Christ.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <img 
+            src="images/lwi-partner-placeholder.jpg" 
+            alt="Living Water International" 
+            class="rounded-lg shadow-lg w-full"
+          />
+        </div>
+        <div>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Which alone satisfies the deepest thirst. We love partnering with Living Water International, knowing that every dollar raised helps communities gain access to clean water and hope.
+          </p>
+          <div class="space-x-4">
+            <a 
+              href="https://water.cc/" 
+              target="_blank" 
+              class="btn-primary inline-block"
+            >
+              Visit Their Website
+            </a>
+            <a 
+              href="https://fundraise.water.cc/give/275815/#!/donation/checkout" 
+              target="_blank" 
+              class="btn-secondary inline-block"
+            >
+              Donate to LWI
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ========== END LWI SECTION ========== -->
+
+  <!-- ========== DONATE SECTION ========== -->
+  <section id="donate" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Support Island Party 2025</h2>
+        <p class="section-subtitle max-w-3xl mx-auto">
+          Your generous donations make this event possible and help us give thousands of dollars every year to Living Water International.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <img 
+            src="images/donate-placeholder.jpg" 
+            alt="Donate to Island Party" 
+            class="rounded-lg shadow-lg w-full"
+          />
+        </div>
+        <div>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Island Party is made possible every year because of the generous donations of various companies and individuals around the Bryan/College Station area. Thank you for helping us create a lasting impact!
+          </p>
+          <a 
+            href="https://byx.org/tamuislandparty/" 
+            target="_blank" 
+            class="btn-primary inline-block mt-3"
+          >
+            Donate Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ========== END DONATE SECTION ========== -->
+
+  <!-- ========== SPONSORS SECTION ========== -->
+  <section id="sponsors" class="py-16 bg-gradient-to-r from-white to-teal-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Thank You to Our Sponsors</h2>
+        <p class="section-subtitle max-w-3xl mx-auto">
+          We appreciate the generous support from our sponsors. Stay tuned for more details!
+        </p>
+      </div>
+
+      <!-- Placeholder for sponsor logos -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
+        <!-- Replace with real sponsor logos/names once available -->
+        <div class="flex flex-col items-center">
+          <img 
+            src="images/sponsor-logo1-placeholder.png" 
+            alt="Sponsor 1" 
+            class="w-32 h-32 object-contain"
+          />
+          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #1</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <img 
+            src="images/sponsor-logo2-placeholder.png" 
+            alt="Sponsor 2" 
+            class="w-32 h-32 object-contain"
+          />
+          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #2</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <img 
+            src="images/sponsor-logo3-placeholder.png" 
+            alt="Sponsor 3" 
+            class="w-32 h-32 object-contain"
+          />
+          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #3</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <img 
+            src="images/sponsor-logo4-placeholder.png" 
+            alt="Sponsor 4" 
+            class="w-32 h-32 object-contain"
+          />
+          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #4</span>
+        </div>
+
+        <!-- Additional sponsors or placeholders as needed -->
+        <!-- e.g. more grid items... -->
+      </div>
+
+      <div class="mt-12 text-center">
+        <h3 class="text-xl font-semibold text-teal-700 mb-2">Interested in Sponsoring?</h3>
+        <p class="text-gray-700">
+          Contact <strong>Andrew Applewhite</strong> at 
+          <a href="mailto:ipfinance@tamubyx.org" class="text-teal-700 hover:underline">
+            ipfinance@tamubyx.org
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- ========== END SPONSORS SECTION ========== -->
+
+  <!-- ========== LINEUP SECTION ========== -->
+  <section id="lineup" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="section-title">2025 Lineup</h2>
+        <p class="section-subtitle max-w-3xl mx-auto">
+          Coming Soon — stay tuned for our big headliner announcement!
+        </p>
+      </div>
+
+      <!-- Placeholder content for lineup -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md">
+          <img 
+            src="images/lineup-placeholder1.jpg" 
+            alt="Band 1" 
+            class="w-full h-48 object-cover mb-4 rounded"
+          />
+          <h3 class="text-xl font-semibold text-teal-700">Headliner TBA</h3>
+          <p class="text-gray-700 mt-2">Check back soon for updates!</p>
+        </div>
+        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md">
+          <img 
+            src="images/lineup-placeholder2.jpg" 
+            alt="Band 2" 
+            class="w-full h-48 object-cover mb-4 rounded"
+          />
+          <h3 class="text-xl font-semibold text-teal-700">Supporting Act</h3>
+          <p class="text-gray-700 mt-2">Details coming soon.</p>
+        </div>
+        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md">
+          <img 
+            src="images/lineup-placeholder3.jpg" 
+            alt="Band 3" 
+            class="w-full h-48 object-cover mb-4 rounded"
+          />
+          <h3 class="text-xl font-semibold text-teal-700">Opening Act</h3>
+          <p class="text-gray-700 mt-2">Stay tuned for official announcement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ========== END LINEUP SECTION ========== -->
+
+  <!-- ========== TICKETS SECTION ========== -->
+  <section id="tickets" class="py-16 bg-gradient-to-r from-teal-50 to-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Get Your Tickets!</h2>
+        <p class="section-subtitle max-w-3xl mx-auto">
+          Ticket link coming soon. Make sure to follow our social media for the latest updates and pricing.
+        </p>
+      </div>
+
+      <!-- Placeholder ticket info -->
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <!-- Example Card -->
+        <div class="p-6 border bg-white rounded-lg shadow text-center max-w-sm w-full transition hover:shadow-md">
+          <img 
+            src="images/ticket-placeholder.jpg" 
+            alt="Ticket Placeholder" 
+            class="w-full h-48 object-cover mb-4 rounded"
+          />
+          <h3 class="text-xl font-bold text-teal-700 mb-2">General Admission</h3>
+          <p class="text-gray-700">Placeholder text for pricing.</p>
+        </div>
+        <!-- More ticket tiers as needed... -->
+
+      </div>
+      <div class="mt-8 text-center">
+        <a 
+          href="#" 
+          class="btn-primary inline-block disabled:opacity-50 cursor-not-allowed"
+        >
+          Check Back Soon for Tickets!
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- ========== END TICKETS SECTION ========== -->
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-teal-900 text-teal-100 py-10 mt-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- About -->
+        <div>
+          <h4 class="text-xl font-semibold mb-4">About Island Party</h4>
+          <p class="text-teal-100 leading-relaxed">
+            TAMU Island Party is an annual music festival hosted by Beta Upsilon Chi, dedicated to fostering community and supporting charitable causes.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#about" class="hover:underline">About Island Party</a></li>
+            <li><a href="#lwi" class="hover:underline">Living Water Int’l</a></li>
+            <li><a href="#donate" class="hover:underline">Donate</a></li>
+            <li><a href="#sponsors" class="hover:underline">Sponsors</a></li>
+            <li><a href="#lineup" class="hover:underline">Lineup</a></li>
+            <li><a href="#tickets" class="hover:underline">Tickets</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
+          <p class="mb-2">
+            <i class="fas fa-envelope mr-2"></i>
+            <a 
+              href="mailto:info@byxislandparty.com"
+              class="text-teal-100 hover:underline"
+            >
+              info@byxislandparty.com
+            </a>
+          </p>
+          <p class="mb-2">
+            <i class="fas fa-phone mr-2"></i>
+            <a 
+              href="tel:+1234567890" 
+              class="text-teal-100 hover:underline"
+            >
+              +1 (234) 567-890
+            </a>
+          </p>
+          <div class="flex space-x-4 mt-4">
+            <a href="#" class="hover:text-teal-200">
+              <i class="fab fa-facebook-f text-2xl"></i>
+            </a>
+            <a href="#" class="hover:text-teal-200">
+              <i class="fab fa-instagram text-2xl"></i>
+            </a>
+            <a href="#" class="hover:text-teal-200">
+              <i class="fab fa-twitter text-2xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center border-t border-teal-700 pt-4">
+        <p>&copy; 2025 TAMU Island Party. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ========== END FOOTER ========== -->
+
+  <!-- External JavaScript -->
+  <script src="scripts.js"></script>
+</body>
+</html>
