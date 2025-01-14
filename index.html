@@ -39,6 +39,7 @@
   </script>
 </head>
 <body class="font-sans text-gray-900 bg-white" x-data="scrollHandler" x-init="init()">
+
   <!-- ========== NAVIGATION ========== -->
   <nav 
     class="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-200 transition-shadow duration-300"
@@ -63,8 +64,8 @@
         @click="mobileMenuOpen = !mobileMenuOpen"
         aria-label="Toggle mobile menu"
       >
-        <!-- For Font Awesome 6: 'fa-solid fa-bars' or 'fa-solid fa-times' -->
-        <i :class="mobileMenuOpen ? 'fa-solid fa-bars' : 'fa-solid fa-times'"></i>
+        <!-- Fix: show bars when closed, X when open -->
+        <i :class="mobileMenuOpen ? 'fa-solid fa-times text-2xl' : 'fa-solid fa-bars text-2xl'"></i>
       </button>
 
       <!-- Desktop Nav Links -->
@@ -98,10 +99,6 @@
   <!-- ========== END NAVIGATION ========== -->
 
   <!-- ========== HERO SECTION ========== -->
-  <!-- 
-    Use a .hero-parallax class so that on mobile we switch to 'bg-scroll' 
-    while on md+ we use 'bg-fixed' for parallax. 
-  -->
   <section 
     class="hero-parallax relative flex items-center justify-center overflow-hidden 
            h-[80vh] md:h-screen bg-center bg-cover bg-no-repeat" 
@@ -187,7 +184,12 @@
   <!-- ========== END ABOUT ISLAND PARTY ========== -->
 
   <!-- ========== LIVING WATER INTERNATIONAL ========== -->
-  <section id="lwi" class="py-16 bg-gradient-to-r from-teal-50 to-white relative">
+  <section 
+    id="lwi" 
+    class="py-16 bg-gradient-to-r from-teal-50 to-white relative"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="section-title">Our Mission Partner</h2>
@@ -197,14 +199,17 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="transform hover:scale-105 transition-transform duration-300">
+        <div 
+          class="transform hover:scale-105 transition-transform duration-300"
+          data-aos="zoom-in"
+        >
           <img 
             src="images/fundraising.jpg" 
             alt="Living Water International" 
             class="rounded-lg shadow-lg w-full"
           />
         </div>
-        <div>
+        <div data-aos="fade-left" data-aos-duration="1000">
           <p class="text-gray-700 leading-relaxed mb-6">
             Which alone satisfies the deepest thirst. We love partnering with Living Water International, knowing that every dollar raised helps communities gain access to clean water and hope.
           </p>
@@ -231,7 +236,12 @@
   <!-- ========== END LWI SECTION ========== -->
 
   <!-- ========== DONATE SECTION ========== -->
-  <section id="donate" class="py-16 bg-white relative">
+  <section 
+    id="donate" 
+    class="py-16 bg-white relative"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="section-title">Support Island Party 2025</h2>
@@ -241,14 +251,17 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="transform hover:scale-105 transition-transform duration-300">
+        <div 
+          class="transform hover:scale-105 transition-transform duration-300"
+          data-aos="zoom-in"
+        >
           <img 
             src="images/hero.jpg" 
             alt="Donate to Island Party" 
             class="rounded-lg shadow-lg w-full"
           />
         </div>
-        <div>
+        <div data-aos="fade-left">
           <p class="text-gray-700 leading-relaxed mb-6">
             Island Party is made possible every year because of the generous donations of various companies and individuals around the Bryan/College Station area. Thank you for helping us create a lasting impact!
           </p>
@@ -266,7 +279,12 @@
   <!-- ========== END DONATE SECTION ========== -->
 
   <!-- ========== SPONSORS SECTION ========== -->
-  <section id="sponsors" class="py-16 bg-gradient-to-r from-white to-teal-50 relative">
+  <section 
+    id="sponsors" 
+    class="py-16 bg-gradient-to-r from-white to-teal-50 relative"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="section-title">Thank You to Our Sponsors</h2>
@@ -277,8 +295,8 @@
 
       <!-- Placeholder for sponsor logos -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
-        <!-- Replace with real sponsor logos/names once available -->
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
+        <!-- Each sponsor item with a subtle zoom animation -->
+        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in">
           <img 
             src="images/sponsor2.svg" 
             alt="Sponsor 1" 
@@ -286,7 +304,7 @@
           />
           <span class="mt-2 text-gray-700 text-sm">Sponsor Name #1</span>
         </div>
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="100">
           <img 
             src="images/sponsor2.svg" 
             alt="Sponsor 2" 
@@ -294,7 +312,7 @@
           />
           <span class="mt-2 text-gray-700 text-sm">Sponsor Name #2</span>
         </div>
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="200">
           <img 
             src="images/sponsor2.svg" 
             alt="Sponsor 3" 
@@ -302,7 +320,7 @@
           />
           <span class="mt-2 text-gray-700 text-sm">Sponsor Name #3</span>
         </div>
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="300">
           <img 
             src="images/sponsor2.svg" 
             alt="Sponsor 4" 
@@ -312,7 +330,7 @@
         </div>
       </div>
 
-      <div class="mt-12 text-center">
+      <div class="mt-12 text-center" data-aos="fade-left">
         <h3 class="text-xl font-semibold text-teal-700 mb-2">Interested in Sponsoring?</h3>
         <p class="text-gray-700">
           Contact <strong>Andrew Applewhite</strong> at 
@@ -326,7 +344,12 @@
   <!-- ========== END SPONSORS SECTION ========== -->
 
   <!-- ========== LINEUP SECTION ========== -->
-  <section id="lineup" class="py-16 bg-white">
+  <section 
+    id="lineup" 
+    class="py-16 bg-white"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="section-title">2025 Lineup</h2>
@@ -337,7 +360,10 @@
 
       <!-- Placeholder content for lineup -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md">
+        <div 
+          class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md"
+          data-aos="zoom-in"
+        >
           <img 
             src="images/artist5.avif" 
             alt="Band 1" 
@@ -346,7 +372,11 @@
           <h3 class="text-xl font-semibold text-teal-700">Headliner TBA</h3>
           <p class="text-gray-700 mt-2">Check back soon for updates!</p>
         </div>
-        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md">
+        <div 
+          class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
           <img 
             src="images/artist5.avif" 
             alt="Band 2" 
@@ -355,7 +385,11 @@
           <h3 class="text-xl font-semibold text-teal-700">Supporting Act</h3>
           <p class="text-gray-700 mt-2">Details coming soon.</p>
         </div>
-        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md">
+        <div 
+          class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
           <img 
             src="images/artist5.avif" 
             alt="Band 3" 
@@ -370,7 +404,12 @@
   <!-- ========== END LINEUP SECTION ========== -->
 
   <!-- ========== TICKETS SECTION ========== -->
-  <section id="tickets" class="py-16 bg-gradient-to-r from-teal-50 to-white">
+  <section 
+    id="tickets" 
+    class="py-16 bg-gradient-to-r from-teal-50 to-white"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="section-title">Get Your Tickets!</h2>
@@ -382,7 +421,7 @@
       <!-- Placeholder ticket info -->
       <div class="flex flex-col md:flex-row items-center justify-center gap-8">
         <!-- Example Card -->
-        <div class="p-6 border bg-white rounded-lg shadow text-center max-w-sm w-full transition hover:shadow-md">
+        <div class="p-6 border bg-white rounded-lg shadow text-center max-w-sm w-full transition hover:shadow-md" data-aos="zoom-in">
           <img 
             src="images/ticket-placeholder.jpg" 
             alt="Ticket Placeholder" 
@@ -394,7 +433,7 @@
         <!-- More ticket tiers as needed... -->
       </div>
 
-      <div class="mt-8 text-center">
+      <div class="mt-8 text-center" data-aos="fade-left">
         <a 
           href="#" 
           class="btn-primary inline-block disabled:opacity-50 cursor-not-allowed"
@@ -406,77 +445,77 @@
   </section>
   <!-- ========== END TICKETS SECTION ========== -->
 
- <!-- ========== FOOTER ========== -->
- <footer class="bg-teal-900 text-teal-100 py-10 mt-16">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- About -->
-      <div>
-        <h4 class="text-xl font-semibold mb-4">About Island Party</h4>
-        <p class="text-teal-100 leading-relaxed">
-          TAMU Island Party is an annual music festival hosted by Beta Upsilon Chi, dedicated to fostering community and supporting charitable causes.
-        </p>
-      </div>
-      <!-- Quick Links -->
-      <div>
-        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
-        <ul class="space-y-2">
-          <li><a href="#about" class="hover:underline">About Island Party</a></li>
-          <li><a href="#lwi" class="hover:underline">Living Water Int’l</a></li>
-          <li><a href="#donate" class="hover:underline">Donate</a></li>
-          <li><a href="#sponsors" class="hover:underline">Sponsors</a></li>
-          <li><a href="#lineup" class="hover:underline">Lineup</a></li>
-          <li><a href="#tickets" class="hover:underline">Tickets</a></li>
-        </ul>
-      </div>
-      <!-- Contact Info -->
-      <div>
-        <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
-        <p class="mb-2">
-          <i class="fas fa-envelope mr-2"></i>
-          <a href="mailto:info@byxislandparty.com" class="text-teal-100 hover:underline">
-            info@byxislandparty.com
-          </a>
-        </p>
-        <p class="mb-2">
-          <i class="fas fa-phone mr-2"></i>
-          <a href="tel:+1234567890" class="text-teal-100 hover:underline">
-            +1 (234) 567-890
-          </a>
-        </p>
-        <div class="flex space-x-4 mt-4">
-          <a href="#" class="hover:text-teal-200">
-            <i class="fab fa-facebook-f text-2xl"></i>
-          </a>
-          <a href="#" class="hover:text-teal-200">
-            <i class="fab fa-instagram text-2xl"></i>
-          </a>
-          <a href="#" class="hover:text-teal-200">
-            <i class="fab fa-twitter text-2xl"></i>
-          </a>
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-teal-900 text-teal-100 py-10 mt-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- About -->
+        <div>
+          <h4 class="text-xl font-semibold mb-4">About Island Party</h4>
+          <p class="text-teal-100 leading-relaxed">
+            TAMU Island Party is an annual music festival hosted by Beta Upsilon Chi, dedicated to fostering community and supporting charitable causes.
+          </p>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#about" class="hover:underline">About Island Party</a></li>
+            <li><a href="#lwi" class="hover:underline">Living Water Int’l</a></li>
+            <li><a href="#donate" class="hover:underline">Donate</a></li>
+            <li><a href="#sponsors" class="hover:underline">Sponsors</a></li>
+            <li><a href="#lineup" class="hover:underline">Lineup</a></li>
+            <li><a href="#tickets" class="hover:underline">Tickets</a></li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
+          <p class="mb-2">
+            <i class="fas fa-envelope mr-2"></i>
+            <a href="mailto:info@byxislandparty.com" class="text-teal-100 hover:underline">
+              info@byxislandparty.com
+            </a>
+          </p>
+          <p class="mb-2">
+            <i class="fas fa-phone mr-2"></i>
+            <a href="tel:+1234567890" class="text-teal-100 hover:underline">
+              +1 (234) 567-890
+            </a>
+          </p>
+          <div class="flex space-x-4 mt-4">
+            <a href="#" class="hover:text-teal-200">
+              <i class="fab fa-facebook-f text-2xl"></i>
+            </a>
+            <a href="#" class="hover:text-teal-200">
+              <i class="fab fa-instagram text-2xl"></i>
+            </a>
+            <a href="#" class="hover:text-teal-200">
+              <i class="fab fa-twitter text-2xl"></i>
+            </a>
+          </div>
         </div>
       </div>
+
+      <div class="mt-8 text-center border-t border-teal-700 pt-4">
+        <p>&copy; 2025 TAMU Island Party. All rights reserved.</p>
+      </div>
     </div>
+  </footer>
+  <!-- ========== END FOOTER ========== -->
 
-    <div class="mt-8 text-center border-t border-teal-700 pt-4">
-      <p>&copy; 2025 TAMU Island Party. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-<!-- ========== END FOOTER ========== -->
+  <!-- AOS JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      // Global settings:
+      offset: 120,  // offset (in px) from the original trigger point
+      duration: 600, // animation duration in ms
+      once: false,   // whether animation should happen only once - while scrolling down
+    });
+  </script>
 
-<!-- AOS JavaScript -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    // Global settings:
-    offset: 120,  // offset (in px) from the original trigger point
-    duration: 600, // animation duration in ms
-    once: false,   // whether animation should happen only once - while scrolling down
-  });
-</script>
-
-<!-- Your custom scripts.js (optional) -->
-<script src="scripts.js"></script>
+  <!-- Your custom scripts.js (optional) -->
+  <script src="scripts.js"></script>
 </body>
 </html>
