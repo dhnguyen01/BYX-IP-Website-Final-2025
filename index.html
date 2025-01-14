@@ -8,16 +8,21 @@
   <!-- Favicon (Optional) -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <!-- External CSS (compiled Tailwind) -->
+  <!-- Compiled Tailwind CSS -->
   <link rel="stylesheet" href="dist/output.css" />
 
-  <!-- Alpine.js (Optional for mobile nav toggling) -->
+  <!-- Alpine.js (Optional) -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
   <!-- Font Awesome (for icons) -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- If using FA6: <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script> -->
+  <!-- If using FA5: same kit or local file. Make sure the kit ID is correct. -->
+  <script src="https://kit.fontawesome.com/e862a85250.js" crossorigin="anonymous"></script>
 
-  <!-- External CSS -->
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- (Optional) Your custom CSS, if separate from Tailwind build -->
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Inline Alpine.js for Sticky Header on Scroll (Optional) -->
@@ -34,7 +39,6 @@
   </script>
 </head>
 <body class="font-sans text-gray-900 bg-white" x-data="scrollHandler" x-init="init()">
-
   <!-- ========== NAVIGATION ========== -->
   <nav 
     class="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-200 transition-shadow duration-300"
@@ -43,7 +47,6 @@
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <!-- Logo / Branding -->
       <div class="flex items-center space-x-2">
-        <!-- Placeholder Logo -->
         <img 
           src="logos/design_3.svg" 
           alt="Island Party Logo" 
@@ -60,8 +63,8 @@
         @click="mobileMenuOpen = !mobileMenuOpen"
         aria-label="Toggle mobile menu"
       >
-        <!-- Use Font Awesome 5 (fas) or 6 (fa-solid) icons -->
-        <i :class="mobileMenuOpen ? 'fas fa-times text-2xl' : 'fas fa-bars text-2xl'"></i>
+        <!-- For Font Awesome 6: 'fa-solid fa-bars' or 'fa-solid fa-times' -->
+        <i :class="mobileMenuOpen ? 'fa-solid fa-bars' : 'fa-solid fa-times'"></i>
       </button>
 
       <!-- Desktop Nav Links -->
@@ -74,6 +77,7 @@
         <a href="#tickets" class="nav-link">Tickets</a>
       </div>
     </div>
+
     <!-- Mobile Menu -->
     <div 
       class="md:hidden bg-white border-t border-gray-200" 
@@ -94,35 +98,36 @@
   <!-- ========== END NAVIGATION ========== -->
 
   <!-- ========== HERO SECTION ========== -->
+  <!-- 
+    Use a .hero-parallax class so that on mobile we switch to 'bg-scroll' 
+    while on md+ we use 'bg-fixed' for parallax. 
+  -->
   <section 
-    class="relative h-[80vh] md:h-screen flex items-center justify-center bg-fixed bg-center bg-cover overflow-hidden" 
+    class="hero-parallax relative flex items-center justify-center overflow-hidden 
+           h-[80vh] md:h-screen bg-center bg-cover bg-no-repeat" 
     style="background-image: url('images/hero.jpg');"
   >
     <!-- Overlay -->
     <div class="absolute inset-0 bg-teal-900 bg-opacity-40"></div>
+
     <!-- Hero Content -->
-    <div class="relative z-10 text-center text-white px-6 max-w-2xl mx-auto">
-      <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg mb-4 animate-fadeInUp">
+    <div 
+      class="relative z-10 text-center text-white px-6 max-w-2xl mx-auto"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg mb-4">
         TAMU Island Party 2025
       </h1>
-      <p class="text-lg md:text-2xl mb-8 leading-relaxed animate-fadeInUp delay-100">
+      <p class="text-lg md:text-2xl mb-8 leading-relaxed">
         A family-friendly music concert with top bands, food trucks, vendors, and much more!
       </p>
-      <div class="animate-fadeInUp delay-200">
-        <a 
-          href="#tickets" 
-          class="btn-primary inline-block mt-2"
-        >
-          Get Tickets
-        </a>
-        <a 
-          href="#donate" 
-          class="btn-secondary inline-block mt-2 ml-2"
-        >
-          Donate Now
-        </a>
+      <div>
+        <a href="#tickets" class="btn-primary inline-block mt-2">Get Tickets</a>
+        <a href="#donate" class="btn-secondary inline-block mt-2 ml-2">Donate Now</a>
       </div>
     </div>
+
     <!-- Decorative Floating Element (Optional) -->
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
       <svg class="w-screen h-auto" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,10 +138,12 @@
   <!-- ========== END HERO SECTION ========== -->
 
   <!-- ========== ABOUT ISLAND PARTY ========== -->
-  <section id="about" class="relative pt-16 bg-white">
-    <!-- Decorative Top Divider (Optional) -->
-    <div class="absolute top-0 w-full h-16 bg-white"></div>
-
+  <section 
+    id="about" 
+    class="relative pt-16 bg-white"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
     <div class="max-w-7xl mx-auto px-4 pb-16">
       <div class="text-center mb-12">
         <h2 class="section-title">About Island Party</h2>
@@ -144,7 +151,6 @@
           Island Party is a family-friendly music concert including some of the nation’s most popular bands, held locally at Wolf Pen Creek Amphitheater.
         </p>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div class="order-2 md:order-1 space-y-4">
           <p class="text-gray-700 leading-relaxed">
@@ -157,13 +163,18 @@
             <a href="https://instagram.com/aggieislandparty" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl transition-colors">
               <i class="fab fa-instagram"></i>
             </a>
-            <!-- If a Facebook link becomes available -->
-            <!-- <a href="#" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl transition-colors">
+            <!-- Potential Facebook link 
+            <a href="#" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl transition-colors">
               <i class="fab fa-facebook-f"></i>
-            </a> -->
+            </a> 
+            -->
           </div>
         </div>
-        <div class="order-1 md:order-2 transform hover:scale-105 transition-transform duration-300">
+        <div 
+          class="order-1 md:order-2 transform hover:scale-105 transition-transform duration-300"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
           <img 
             src="images/about.jpg" 
             alt="Island Party attendees" 
@@ -395,72 +406,77 @@
   </section>
   <!-- ========== END TICKETS SECTION ========== -->
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="bg-teal-900 text-teal-100 py-10 mt-16">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- About -->
-        <div>
-          <h4 class="text-xl font-semibold mb-4">About Island Party</h4>
-          <p class="text-teal-100 leading-relaxed">
-            TAMU Island Party is an annual music festival hosted by Beta Upsilon Chi, dedicated to fostering community and supporting charitable causes.
-          </p>
-        </div>
-        <!-- Quick Links -->
-        <div>
-          <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
-          <ul class="space-y-2">
-            <li><a href="#about" class="hover:underline">About Island Party</a></li>
-            <li><a href="#lwi" class="hover:underline">Living Water Int’l</a></li>
-            <li><a href="#donate" class="hover:underline">Donate</a></li>
-            <li><a href="#sponsors" class="hover:underline">Sponsors</a></li>
-            <li><a href="#lineup" class="hover:underline">Lineup</a></li>
-            <li><a href="#tickets" class="hover:underline">Tickets</a></li>
-          </ul>
-        </div>
-        <!-- Contact Info -->
-        <div>
-          <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
-          <p class="mb-2">
-            <i class="fas fa-envelope mr-2"></i>
-            <a 
-              href="mailto:info@byxislandparty.com"
-              class="text-teal-100 hover:underline"
-            >
-              info@byxislandparty.com
-            </a>
-          </p>
-          <p class="mb-2">
-            <i class="fas fa-phone mr-2"></i>
-            <a 
-              href="tel:+1234567890" 
-              class="text-teal-100 hover:underline"
-            >
-              +1 (234) 567-890
-            </a>
-          </p>
-          <div class="flex space-x-4 mt-4">
-            <a href="#" class="hover:text-teal-200">
-              <i class="fab fa-facebook-f text-2xl"></i>
-            </a>
-            <a href="#" class="hover:text-teal-200">
-              <i class="fab fa-instagram text-2xl"></i>
-            </a>
-            <a href="#" class="hover:text-teal-200">
-              <i class="fab fa-twitter text-2xl"></i>
-            </a>
-          </div>
-        </div>
+ <!-- ========== FOOTER ========== -->
+ <footer class="bg-teal-900 text-teal-100 py-10 mt-16">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- About -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">About Island Party</h4>
+        <p class="text-teal-100 leading-relaxed">
+          TAMU Island Party is an annual music festival hosted by Beta Upsilon Chi, dedicated to fostering community and supporting charitable causes.
+        </p>
       </div>
-
-      <div class="mt-8 text-center border-t border-teal-700 pt-4">
-        <p>&copy; 2025 TAMU Island Party. All rights reserved.</p>
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#about" class="hover:underline">About Island Party</a></li>
+          <li><a href="#lwi" class="hover:underline">Living Water Int’l</a></li>
+          <li><a href="#donate" class="hover:underline">Donate</a></li>
+          <li><a href="#sponsors" class="hover:underline">Sponsors</a></li>
+          <li><a href="#lineup" class="hover:underline">Lineup</a></li>
+          <li><a href="#tickets" class="hover:underline">Tickets</a></li>
+        </ul>
+      </div>
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
+        <p class="mb-2">
+          <i class="fas fa-envelope mr-2"></i>
+          <a href="mailto:info@byxislandparty.com" class="text-teal-100 hover:underline">
+            info@byxislandparty.com
+          </a>
+        </p>
+        <p class="mb-2">
+          <i class="fas fa-phone mr-2"></i>
+          <a href="tel:+1234567890" class="text-teal-100 hover:underline">
+            +1 (234) 567-890
+          </a>
+        </p>
+        <div class="flex space-x-4 mt-4">
+          <a href="#" class="hover:text-teal-200">
+            <i class="fab fa-facebook-f text-2xl"></i>
+          </a>
+          <a href="#" class="hover:text-teal-200">
+            <i class="fab fa-instagram text-2xl"></i>
+          </a>
+          <a href="#" class="hover:text-teal-200">
+            <i class="fab fa-twitter text-2xl"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </footer>
-  <!-- ========== END FOOTER ========== -->
 
-  <!-- External JavaScript -->
-  <script src="scripts.js"></script>
+    <div class="mt-8 text-center border-t border-teal-700 pt-4">
+      <p>&copy; 2025 TAMU Island Party. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<!-- ========== END FOOTER ========== -->
+
+<!-- AOS JavaScript -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    // Global settings:
+    offset: 120,  // offset (in px) from the original trigger point
+    duration: 600, // animation duration in ms
+    once: false,   // whether animation should happen only once - while scrolling down
+  });
+</script>
+
+<!-- Your custom scripts.js (optional) -->
+<script src="scripts.js"></script>
 </body>
 </html>

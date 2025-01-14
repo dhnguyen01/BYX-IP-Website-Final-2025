@@ -44,6 +44,24 @@
     shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0 
     focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2;
   }
+
+  /* Parallax effext */
+
+  .hero-parallax {
+    background-attachment: scroll; /* default for mobile */
+  }
+  
+  @media (min-width: 768px) {
+    .hero-parallax {
+      background-attachment: fixed; /* parallax on tablets/desktop */
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero-parallax {
+      background-position: center top; /* shift the focal point on mobile */
+    }
+  }
   
   /* Navigation Links */
   .nav-link {
