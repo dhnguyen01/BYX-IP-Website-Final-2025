@@ -10,6 +10,12 @@
 
 /* Scroll behavior is handled by .scroll-smooth in HTML */
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
 @keyframes fadeInUp {
     from {
       opacity: 0;
