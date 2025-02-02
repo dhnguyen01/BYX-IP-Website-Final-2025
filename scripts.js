@@ -1,6 +1,11 @@
-// Smooth scrolling for internal anchor links 
-// (If you don’t want to rely on Tailwind’s .scroll-smooth alone)
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+/**
+ * Smooth Scrolling for Internal Anchor Links
+ * Enhances navigation by smoothly scrolling to target sections.
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  const anchors = document.querySelectorAll('a[href^="#"]');
+
+  anchors.forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       // Ignore if href is just "#"
       if (this.getAttribute("href") !== "#") {
@@ -15,8 +20,8 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       }
     });
   });
-  
-  /*
-    If you need any extra JS for carousels/sliders or more advanced behavior,
-    feel free to integrate a library (like Swiper.js) or create custom scripts here.
-  */
+});
+
+/*
+  Additional JavaScript functionality (e.g., for sliders/carousels) can be added here.
+*/
