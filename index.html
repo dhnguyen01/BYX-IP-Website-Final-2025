@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- A brief description improves SEO and accessibility -->
   <meta name="description" content="TAMU Island Party 2025 - A family-friendly music festival featuring top bands, food trucks, vendors, and community engagement." />
   <title>TAMU Island Party 2025</title>
   
@@ -25,7 +24,7 @@
   <!-- Font Awesome (for icons) -->
   <script src="https://kit.fontawesome.com/e862a85250.js" crossorigin="anonymous"></script>
 
-  <!-- Alpine.js Initialization (combining mobile menu and scroll behavior) -->
+  <!-- Alpine.js Initialization -->
   <script>
     document.addEventListener('alpine:init', () => {
       Alpine.data('app', () => ({
@@ -41,6 +40,7 @@
   </script>
 </head>
 <body class="font-sans text-gray-900 bg-white" x-data="app()" x-init="init()">
+  
   <!-- ========== NAVIGATION ========== -->
   <nav 
     class="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-200 transition-shadow duration-300"
@@ -68,14 +68,15 @@
         <a href="#lwi" class="nav-link">Living Water</a>
         <a href="#donate" class="nav-link">Donate</a>
         <a href="#sponsors" class="nav-link">Sponsors</a>
-        <a href="#lineup" class="nav-link">Lineup</a>
+        <!-- New Bands link -->
+        <a href="#bands" class="nav-link">Bands</a>
         <a href="#tickets" class="nav-link">Tickets</a>
       </div>
     </div>
 
     <!-- Mobile Navigation Menu -->
     <div 
-      class="md:hidden bg-white border-t border-gray-200"
+      class="md:hidden bg-white border-t border-gray-200" 
       x-show="mobileMenuOpen"
       @click.outside="mobileMenuOpen = false"
       x-transition.origin.top
@@ -85,7 +86,8 @@
         <a href="#lwi" class="nav-link" @click="mobileMenuOpen = false">Living Water</a>
         <a href="#donate" class="nav-link" @click="mobileMenuOpen = false">Donate</a>
         <a href="#sponsors" class="nav-link" @click="mobileMenuOpen = false">Sponsors</a>
-        <a href="#lineup" class="nav-link" @click="mobileMenuOpen = false">Lineup</a>
+        <!-- New Bands link -->
+        <a href="#bands" class="nav-link" @click="mobileMenuOpen = false">Bands</a>
         <a href="#tickets" class="nav-link" @click="mobileMenuOpen = false">Tickets</a>
       </div>
     </div>
@@ -203,81 +205,80 @@
   </section>
   <!-- ========== END DONATE SECTION ========== -->
 
-  <!-- ========== SPONSORS SECTION ========== -->
-  <section id="sponsors" class="py-16 bg-gradient-to-r from-white to-teal-50 relative" data-aos="fade-up" data-aos-duration="1000">
+  <!-- ========== BANDS SECTION ========== -->
+  <section id="bands" class="py-16 bg-white" data-aos="fade-up" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
-        <h2 class="section-title">Thank You to Our Sponsors</h2>
+        <h2 class="section-title">Featured Bands</h2>
         <p class="section-subtitle max-w-3xl mx-auto">
-          We appreciate the generous support from our sponsors. Stay tuned for more details!
+          Explore the artistry behind Island Party 2025. Discover band bios, view exclusive images, and listen to their latest tracks on Spotify.
         </p>
       </div>
-      <!-- Sponsor Logos -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in">
-          <img src="images/sponsor2.svg" alt="Sponsor 1" class="w-32 h-32 object-contain" />
-          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #1</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Kanye West Card -->
+        <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+          <img src="images/kanye_west.jpg" alt="Kanye West" class="w-full md:w-1/2 object-cover">
+          <div class="p-6 flex flex-col justify-between">
+            <div>
+              <h3 class="text-2xl font-bold text-teal-700 mb-2">Kanye West</h3>
+              <p class="text-gray-700 mb-4">
+                Kanye West is renowned for his groundbreaking music and innovative style. With a career spanning decades, his influence on hip-hop and culture is undeniable.
+              </p>
+            </div>
+            <a href="https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x" target="_blank" class="btn-primary inline-block mt-2">
+              Listen on Spotify
+            </a>
+          </div>
         </div>
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="100">
-          <img src="images/sponsor2.svg" alt="Sponsor 2" class="w-32 h-32 object-contain" />
-          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #2</span>
+        <!-- BigXthaPlug Card -->
+        <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+          <img src="images/bigxthaplug.jpg" alt="BigXthaPlug" class="w-full md:w-1/2 object-cover">
+          <div class="p-6 flex flex-col justify-between">
+            <div>
+              <h3 class="text-2xl font-bold text-teal-700 mb-2">BigXthaPlug</h3>
+              <p class="text-gray-700 mb-4">
+                BigXthaPlug brings an electrifying energy to the stage. Known for dynamic performances and a distinctive sound, they are a force in the modern music scene.
+              </p>
+            </div>
+            <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
+              Listen on Spotify
+            </a>
+          </div>
         </div>
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="200">
-          <img src="images/sponsor2.svg" alt="Sponsor 3" class="w-32 h-32 object-contain" />
-          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #3</span>
+        <!-- A.J. & Big Justice Card -->
+        <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+          <img src="images/aj_big_justice.jpg" alt="A.J. & Big Justice" class="w-full md:w-1/2 object-cover">
+          <div class="p-6 flex flex-col justify-between">
+            <div>
+              <h3 class="text-2xl font-bold text-teal-700 mb-2">A.J. & Big Justice</h3>
+              <p class="text-gray-700 mb-4">
+                A.J. & Big Justice deliver powerful vocals and memorable beats. Their music is a blend of soulful melodies and modern rhythms that captivate audiences.
+              </p>
+            </div>
+            <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
+              Listen on Spotify
+            </a>
+          </div>
         </div>
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="300">
-          <img src="images/sponsor2.svg" alt="Sponsor 4" class="w-32 h-32 object-contain" />
-          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #4</span>
+        <!-- Kendrick Lamar Card -->
+        <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+          <img src="images/kendrick_lamar.jpg" alt="Kendrick Lamar" class="w-full md:w-1/2 object-cover">
+          <div class="p-6 flex flex-col justify-between">
+            <div>
+              <h3 class="text-2xl font-bold text-teal-700 mb-2">Kendrick Lamar</h3>
+              <p class="text-gray-700 mb-4">
+                Kendrick Lamar is celebrated for his thought-provoking lyrics and innovative soundscapes. His artistry and storytelling have earned him critical acclaim worldwide.
+              </p>
+            </div>
+            <a href="https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg" target="_blank" class="btn-primary inline-block mt-2">
+              Listen on Spotify
+            </a>
+          </div>
         </div>
-      </div>
-
-      <div class="mt-12 text-center" data-aos="fade-left">
-        <h3 class="text-xl font-semibold text-teal-700 mb-2">Interested in Sponsoring?</h3>
-        <p class="text-gray-700">
-          Contact <strong>Andrew Applewhite</strong> at 
-          <a href="mailto:ipfinance@tamubyx.org" class="text-teal-700 hover:underline">ipfinance@tamubyx.org</a>
-        </p>
       </div>
     </div>
   </section>
-  <!-- ========== END SPONSORS SECTION ========== -->
-
-  <!-- ========== LINEUP SECTION ========== -->
-  <section id="lineup" class="py-16 bg-white" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="section-title">2025 Lineup</h2>
-        <p class="section-subtitle max-w-3xl mx-auto">
-          Coming Soon — stay tuned for our big headliner announcement!
-        </p>
-      </div>
-      <!-- Lineup Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md" data-aos="zoom-in">
-          <img src="images/artist5.avif" alt="Headliner TBA" class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform" />
-          <h3 class="text-xl font-semibold text-teal-700">Headliner TBA</h3>
-          <p class="text-gray-700 mt-2">Check back soon for updates!</p>
-        </div>
-        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md" data-aos="zoom-in" data-aos-delay="100">
-          <img src="images/artist5.avif" alt="Supporting Act" class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform" />
-          <h3 class="text-xl font-semibold text-teal-700">Supporting Act</h3>
-          <p class="text-gray-700 mt-2">Details coming soon.</p>
-        </div>
-        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md" data-aos="zoom-in" data-aos-delay="200">
-          <img src="images/artist5.avif" alt="Opening Act" class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform" />
-          <h3 class="text-xl font-semibold text-teal-700">Opening Act</h3>
-          <p class="text-gray-700 mt-2">Stay tuned for official announcement.</p>
-        </div>
-        <div class="p-4 border rounded-lg bg-white shadow transition hover:shadow-md" data-aos="zoom-in" data-aos-delay="200">
-          <img src="images/artist5.avif" alt="Opening Act" class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform" />
-          <h3 class="text-xl font-semibold text-teal-700">Opening Act</h3>
-          <p class="text-gray-700 mt-2">Stay tuned for official announcement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ========== END LINEUP SECTION ========== -->
+  <!-- ========== END BANDS SECTION ========== -->
 
   <!-- ========== TICKETS SECTION ========== -->
   <section id="tickets" class="py-16 bg-gradient-to-r from-teal-50 to-white" data-aos="fade-up" data-aos-duration="1000">
@@ -322,7 +323,7 @@
             <li><a href="#lwi" class="hover:underline">Living Water</a></li>
             <li><a href="#donate" class="hover:underline">Donate</a></li>
             <li><a href="#sponsors" class="hover:underline">Sponsors</a></li>
-            <li><a href="#lineup" class="hover:underline">Lineup</a></li>
+            <li><a href="#bands" class="hover:underline">Bands</a></li>
             <li><a href="#tickets" class="hover:underline">Tickets</a></li>
           </ul>
         </div>
