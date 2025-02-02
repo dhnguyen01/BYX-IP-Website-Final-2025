@@ -35,13 +35,34 @@
       }));
     });
   </script>
+
+  <!-- Additional style for the skip link (ADA) -->
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px;
+      z-index: 100;
+      text-decoration: none;
+      transition: top 0.3s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+  </style>
 </head>
 <body class="font-sans text-gray-900 bg-white" x-data="app()" x-init="init()">
-  
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- ========== NAVIGATION ========== -->
   <nav 
     class="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-200 transition-shadow duration-300"
     :class="hasScrolled ? 'shadow-lg' : 'shadow-sm'"
+    aria-label="Primary Navigation"
   >
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <!-- Logo / Branding -->
@@ -91,259 +112,279 @@
   </nav>
   <!-- ========== END NAVIGATION ========== -->
 
-  <!-- ========== HERO SECTION ========== -->
-  <section 
-    class="hero-parallax relative flex items-center justify-center overflow-hidden h-[80vh] md:h-screen bg-center bg-cover bg-no-repeat" 
-    style="background-image: url('images/hero.jpg');"
-  >
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-teal-900 bg-opacity-40"></div>
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- ========== HERO SECTION ========== -->
+    <section 
+      class="hero-parallax relative flex items-center justify-center overflow-hidden h-[80vh] md:h-screen bg-center bg-cover bg-no-repeat" 
+      style="background-image: url('images/hero.jpg');"
+      aria-label="Hero Section with background image of the event"
+    >
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-teal-900 bg-opacity-40"></div>
 
-    <!-- Hero Content -->
-    <div class="relative z-10 text-center text-white px-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
-      <div class="relative z-10 text-center px-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
-        <!-- Increase the size of the SVG by adding a Tailwind width class (and height if needed) -->
-        <img src="logos/IP25Logo.svg" alt="TAMU Island Party 2025" class="mx-auto" style="width: 600px;">
+      <!-- Hero Content -->
+      <div class="relative z-10 text-center text-white px-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+        <div class="relative z-10 text-center px-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+          <img src="logos/IP25Logo.svg" alt="TAMU Island Party 2025 Logo" class="mx-auto" style="width: 600px;">
+        </div>
+        <div>
+          <a href="#tickets" class="btn-primary inline-block mt-2">Get Tickets</a>
+          <a href="#donate" class="btn-secondary inline-block mt-2 ml-2">Donate Now</a>
+        </div>
       </div>
-      <div>
-        <a href="#tickets" class="btn-primary inline-block mt-2">Get Tickets</a>
-        <a href="#donate" class="btn-secondary inline-block mt-2 ml-2">Donate Now</a>
-      </div>
-    </div>
 
-    <!-- Wave SVG -->
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
-      <svg class="w-screen h-auto" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#fff" d="M0,0V100H1440V0C1200,60,900,60,720,40,510,20,240,20,0,60Z"></path>
-      </svg>
-    </div>
-  </section>
-  <!-- ========== END HERO SECTION ========== -->
-
-  <!-- ========== ABOUT ISLAND PARTY SECTION ========== -->
-  <section id="about" class="relative pt-16 bg-white" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4 pb-16">
-      <div class="text-center mb-12">
-        <h2 class="section-title">About Island Party</h2>
-        <p class="section-subtitle max-w-3xl mx-auto">
-          Island Party is a family-friendly music concert including some of the nation’s most popular bands, held locally at Wolf Pen Creek Amphitheater.
-        </p>
+      <!-- Wave SVG (decorative) -->
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
+        <svg class="w-screen h-auto" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="#fff" d="M0,0V100H1440V0C1200,60,900,60,720,40,510,20,240,20,0,60Z"></path>
+        </svg>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="order-2 md:order-1 space-y-4">
-          <p class="text-gray-700 leading-relaxed">
-            In addition, there are food trucks, vendors, a speaker that shares the gospel, and plenty of family-friendly activities for the whole community to enjoy. Every year, Island Party attracts thousands of attendees from across the state and makes a lasting impact through local and international philanthropy. It serves to connect the community as a whole, hosting college students and permanent residents alike.
+    </section>
+    <!-- ========== END HERO SECTION ========== -->
+
+    <!-- ========== ABOUT ISLAND PARTY SECTION ========== -->
+    <section id="about" class="relative pt-16 bg-white" data-aos="fade-up" data-aos-duration="1000" aria-labelledby="about-title">
+      <div class="max-w-7xl mx-auto px-4 pb-16">
+        <div class="text-center mb-12">
+          <h2 id="about-title" class="section-title">About Island Party</h2>
+          <p class="section-subtitle max-w-3xl mx-auto">
+            Island Party is a family-friendly music concert including some of the nation’s most popular bands, held locally at Wolf Pen Creek Amphitheater.
           </p>
-          <p class="text-gray-700 leading-relaxed">
-            This year, Island Party will be held on <strong>March 29th, 2025</strong>, and we are currently in the early processes of garnering sponsors.
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="order-2 md:order-1 space-y-4">
+            <p class="text-gray-700 leading-relaxed">
+              In addition, there are food trucks, vendors, a speaker that shares the gospel, and plenty of family-friendly activities for the whole community to enjoy. Every year, Island Party attracts thousands of attendees from across the state and makes a lasting impact through local and international philanthropy. It serves to connect the community as a whole, hosting college students and permanent residents alike.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              This year, Island Party will be held on <strong>March 29th, 2025</strong>, and we are currently in the early processes of garnering sponsors.
+            </p>
+            <div class="flex space-x-4 mt-6">
+              <a href="https://instagram.com/aggieislandparty" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl transition-colors" aria-label="Visit our Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+          <div class="order-1 md:order-2 transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-duration="1000">
+            <img src="images/about.jpg" alt="Image showing Island Party attendees" class="rounded-lg shadow-lg w-full" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========== END ABOUT ISLAND PARTY SECTION ========== -->
+
+    <!-- ========== LIVING WATER INTERNATIONAL SECTION ========== -->
+    <section id="lwi" class="py-16 bg-gradient-to-r from-teal-50 to-white relative" data-aos="fade-up" data-aos-duration="1000" aria-labelledby="lwi-title">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="lwi-title" class="section-title">Our Mission Partner</h2>
+          <p class="section-subtitle max-w-3xl mx-auto">
+            Living Water International exists to demonstrate the love of God by helping communities acquire desperately needed clean water, and to experience “living water” — the gospel of Jesus Christ.
           </p>
-          <div class="flex space-x-4 mt-6">
-            <a href="https://instagram.com/aggieislandparty" target="_blank" class="text-gray-700 hover:text-teal-700 text-2xl transition-colors">
-              <i class="fab fa-instagram"></i>
-            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in">
+            <img src="images/living_water.jpg" alt="Living Water International logo or image" class="rounded-lg shadow-lg w-full" />
+          </div>
+          <div data-aos="fade-left" data-aos-duration="1000">
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Which alone satisfies the deepest thirst. We love partnering with Living Water International, knowing that every dollar raised helps communities gain access to clean water and hope.
+            </p>
+            <div class="space-x-4">
+              <a href="https://water.cc/" target="_blank" class="btn-primary inline-block">Visit Their Website</a>
+              <a href="https://fundraise.water.cc/give/275815/#!/donation/checkout" target="_blank" class="btn-secondary inline-block">Donate to LWI</a>
+            </div>
           </div>
         </div>
-        <div class="order-1 md:order-2 transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-duration="1000">
-          <img src="images/about.jpg" alt="Island Party attendees" class="rounded-lg shadow-lg w-full" />
-        </div>
       </div>
-    </div>
-  </section>
-  <!-- ========== END ABOUT ISLAND PARTY SECTION ========== -->
+    </section>
+    <!-- ========== END LIVING WATER INTERNATIONAL SECTION ========== -->
 
-  <!-- ========== LIVING WATER INTERNATIONAL SECTION ========== -->
-  <section id="lwi" class="py-16 bg-gradient-to-r from-teal-50 to-white relative" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="section-title">Our Mission Partner</h2>
-        <p class="section-subtitle max-w-3xl mx-auto">
-          Living Water International exists to demonstrate the love of God by helping communities acquire desperately needed clean water, and to experience “living water” — the gospel of Jesus Christ.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in">
-          <img src="images/living_water.jpg" alt="Living Water International" class="rounded-lg shadow-lg w-full" />
-        </div>
-        <div data-aos="fade-left" data-aos-duration="1000">
-          <p class="text-gray-700 leading-relaxed mb-6">
-            Which alone satisfies the deepest thirst. We love partnering with Living Water International, knowing that every dollar raised helps communities gain access to clean water and hope.
+    <!-- ========== DONATE SECTION ========== -->
+    <section id="donate" class="py-16 bg-white relative" data-aos="fade-up" data-aos-duration="1000" aria-labelledby="donate-title">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="donate-title" class="section-title">Support Island Party 2025</h2>
+          <p class="section-subtitle max-w-3xl mx-auto">
+            Your generous donations make this event possible and help us give thousands of dollars every year to Living Water International.
           </p>
-          <div class="space-x-4">
-            <a href="https://water.cc/" target="_blank" class="btn-primary inline-block">Visit Their Website</a>
-            <a href="https://fundraise.water.cc/give/275815/#!/donation/checkout" target="_blank" class="btn-secondary inline-block">Donate to LWI</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in">
+            <img src="images/support.jpg" alt="Image representing support/donation" class="rounded-lg shadow-lg w-full" />
+          </div>
+          <div data-aos="fade-left">
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Island Party is made possible every year because of the generous donations of various companies and individuals around the Bryan/College Station area. Thank you for helping us create a lasting impact!
+            </p>
+            <a href="https://byx.org/tamuislandparty/" target="_blank" class="btn-primary inline-block mt-3">Donate Now</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- ========== END LIVING WATER INTERNATIONAL SECTION ========== -->
+    </section>
+    <!-- ========== END DONATE SECTION ========== -->
 
-  <!-- ========== DONATE SECTION ========== -->
-  <section id="donate" class="py-16 bg-white relative" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="section-title">Support Island Party 2025</h2>
-        <p class="section-subtitle max-w-3xl mx-auto">
-          Your generous donations make this event possible and help us give thousands of dollars every year to Living Water International.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in">
-          <img src="images/support.jpg" alt="Donate to Island Party" class="rounded-lg shadow-lg w-full" />
-        </div>
-        <div data-aos="fade-left">
-          <p class="text-gray-700 leading-relaxed mb-6">
-            Island Party is made possible every year because of the generous donations of various companies and individuals around the Bryan/College Station area. Thank you for helping us create a lasting impact!
+    <!-- ========== SPONSORS SECTION ========== -->
+    <section id="sponsors" class="py-16 bg-gradient-to-r from-white to-teal-50 relative" data-aos="fade-up" data-aos-duration="1000" aria-labelledby="sponsors-title">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="sponsors-title" class="section-title">Thank You to Our Sponsors</h2>
+          <p class="section-subtitle max-w-3xl mx-auto">
+            We appreciate the generous support from our sponsors. Stay tuned for more details!
           </p>
-          <a href="https://byx.org/tamuislandparty/" target="_blank" class="btn-primary inline-block mt-3">Donate Now</a>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- ========== END DONATE SECTION ========== -->
-
-  <!-- ========== SPONSORS SECTION ========== -->
-  <section id="sponsors" class="py-16 bg-gradient-to-r from-white to-teal-50 relative" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="section-title">Thank You to Our Sponsors</h2>
-        <p class="section-subtitle max-w-3xl mx-auto">
-          We appreciate the generous support from our sponsors. Stay tuned for more details!
-        </p>
-      </div>
-      <!-- Sponsor Logos -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in">
-          <img src="images/sponsor2.svg" alt="Sponsor 1" class="w-32 h-32 object-contain" />
-          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #1</span>
-        </div>
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="100">
-          <img src="images/sponsor2.svg" alt="Sponsor 2" class="w-32 h-32 object-contain" />
-          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #2</span>
-        </div>
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="200">
-          <img src="images/sponsor2.svg" alt="Sponsor 3" class="w-32 h-32 object-contain" />
-          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #3</span>
-        </div>
-        <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="300">
-          <img src="images/sponsor2.svg" alt="Sponsor 4" class="w-32 h-32 object-contain" />
-          <span class="mt-2 text-gray-700 text-sm">Sponsor Name #4</span>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center" data-aos="fade-left">
-        <h3 class="text-xl font-semibold text-teal-700 mb-2">Interested in Sponsoring?</h3>
-        <p class="text-gray-700">
-          Contact <strong>Andrew Applewhite</strong> at 
-          <a href="mailto:ipfinance@tamubyx.org" class="text-teal-700 hover:underline">ipfinance@tamubyx.org</a>
-        </p>
-      </div>
-    </div>
-  </section>
-  <!-- ========== END SPONSORS SECTION ========== -->
-
-
-  <!-- ========== BANDS SECTION ========== -->
-  <section id="bands" class="py-16 bg-white" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="section-title">Featured Bands</h2>
-        <p class="section-subtitle max-w-3xl mx-auto">
-          Explore the Island Party 2025 lineup and listen to their latest tracks.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Artist 1 Card -->
-        <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-          <img src="images/artist1.jpg" alt="Artist 1" class="w-full md:w-1/2 object-cover">
-          <div class="p-6 flex flex-col justify-between">
-            <div>
-              <h3 class="text-2xl font-bold text-teal-700 mb-2">Artist 1</h3>
-              <p class="text-gray-700 mb-4">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa accusamus facere incidunt tempora non similique assumenda adipisci ex voluptatem. Sequi, commodi assumenda accusamus optio itaque atque ad voluptatem iusto molestias.
-              </p>
-            </div>
-            <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
-              Listen on Spotify
-            </a>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
+          <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in">
+            <img src="images/sponsor2.svg" alt="Sponsor 1 logo" class="w-32 h-32 object-contain" />
+            <span class="mt-2 text-gray-700 text-sm">Sponsor Name #1</span>
+          </div>
+          <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="100">
+            <img src="images/sponsor2.svg" alt="Sponsor 2 logo" class="w-32 h-32 object-contain" />
+            <span class="mt-2 text-gray-700 text-sm">Sponsor Name #2</span>
+          </div>
+          <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="200">
+            <img src="images/sponsor2.svg" alt="Sponsor 3 logo" class="w-32 h-32 object-contain" />
+            <span class="mt-2 text-gray-700 text-sm">Sponsor Name #3</span>
+          </div>
+          <div class="flex flex-col items-center transform hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="300">
+            <img src="images/sponsor2.svg" alt="Sponsor 4 logo" class="w-32 h-32 object-contain" />
+            <span class="mt-2 text-gray-700 text-sm">Sponsor Name #4</span>
           </div>
         </div>
-        <!-- Artist 2 Card -->
-        <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-          <img src="images/artist2.jpg" alt="Artist 2" class="w-full md:w-1/2 object-cover">
-          <div class="p-6 flex flex-col justify-between">
-            <div>
-              <h3 class="text-2xl font-bold text-teal-700 mb-2">Artist 2</h3>
-              <p class="text-gray-700 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ipsum numquam delectus dolorum doloribus reiciendis perferendis dicta quae qui exercitationem rerum modi voluptas possimus consectetur porro mollitia eum illo officiis.
-              </p>
-            </div>
-            <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
-              Listen on Spotify
-            </a>
-          </div>
+
+        <div class="mt-12 text-center" data-aos="fade-left">
+          <h3 class="text-xl font-semibold text-teal-700 mb-2">Interested in Sponsoring?</h3>
+          <p class="text-gray-700">
+            Contact <strong>Andrew Applewhite</strong> at 
+            <a href="mailto:ipfinance@tamubyx.org" class="text-teal-700 hover:underline">ipfinance@tamubyx.org</a>
+          </p>
         </div>
-        <!-- Artist 3 Card -->
-        <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-          <img src="images/artist_3.jpg" alt="Artist 3" class="w-full md:w-1/2 object-cover">
-          <div class="p-6 flex flex-col justify-between">
-            <div>
-              <h3 class="text-2xl font-bold text-teal-700 mb-2">Artist 3</h3>
-              <p class="text-gray-700 mb-4">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur assumenda velit ipsum maxime nesciunt veritatis labore, provident, officiis, quae sapiente asperiores ipsam nobis itaque perferendis aperiam alias repudiandae. Magnam, quia?
-              </p>
-            </div>
-            <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
-              Listen on Spotify
-            </a>
-          </div>
+      </div>
+    </section>
+    <!-- ========== END SPONSORS SECTION ========== -->
+
+    
+    <!-- ========== BANDS SECTION ========== -->
+    <section id="bands" class="py-16 bg-white" data-aos="fade-up" data-aos-duration="1000" aria-labelledby="bands-title">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="bands-title" class="section-title">Featured Bands</h2>
+          <p class="section-subtitle max-w-3xl mx-auto">
+            Explore the Island Party 2025 lineup and listen to their latest tracks.
+          </p>
         </div>
-        <!-- Artist 4 Card -->
-        <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 md:h-64">
-          <img src="images/artist4.jpeg" alt="Artist 4" class="w-full md:w-1/2 object-cover">
-          <div class="p-6 flex flex-col justify-between">
-            <div>
-              <h3 class="text-2xl font-bold text-teal-700 mb-2">Artist 4</h3>
-              <p class="text-gray-700 mb-4">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam error ducimus accusantium? Tempora fugit, non ad, earum labore, numquam itaque dignissimos incidunt hic dolorum quo quos corporis excepturi exercitationem! Non?
-              </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Artist 1 Card -->
+          <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+            <img src="images/artist1.jpg" alt="Artist 1" class="w-full md:w-1/2 object-cover">
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h3 class="text-2xl font-bold text-teal-700 mb-2">Artist 1</h3>
+                <p class="text-gray-700 mb-4">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa accusamus facere incidunt tempora non similique assumenda adipisci ex voluptatem. Sequi, commodi assumenda accusamus optio itaque atque ad voluptatem iusto molestias.
+                </p>
+              </div>
+              <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
+                Listen on Spotify
+              </a>
             </div>
-            <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
-              Listen on Spotify
-            </a>
+          </div>
+          <!-- Artist 2 Card -->
+          <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+            <img src="images/artist2.jpg" alt="Artist 2" class="w-full md:w-1/2 object-cover">
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h3 class="text-2xl font-bold text-teal-700 mb-2">Artist 2</h3>
+                <p class="text-gray-700 mb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ipsum numquam delectus dolorum doloribus reiciendis perferendis dicta quae qui exercitationem rerum modi voluptas possimus consectetur porro mollitia eum illo officiis.
+                </p>
+              </div>
+              <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
+                Listen on Spotify
+              </a>
+            </div>
+          </div>
+          <!-- Artist 3 Card -->
+          <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+            <img src="images/artist_3.jpg" alt="Artist 3" class="w-full md:w-1/2 object-cover">
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h3 class="text-2xl font-bold text-teal-700 mb-2">Artist 3</h3>
+                <p class="text-gray-700 mb-4">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur assumenda velit ipsum maxime nesciunt veritatis labore, provident, officiis, quae sapiente asperiores ipsam nobis itaque perferendis aperiam alias repudiandae. Magnam, quia?
+                </p>
+              </div>
+              <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
+                Listen on Spotify
+              </a>
+            </div>
+          </div>
+          <!-- Artist 4 Card -->
+          <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+            <img src="images/artist4.jpeg" alt="Artist 4" class="w-full md:w-1/2 object-cover">
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h3 class="text-2xl font-bold text-teal-700 mb-2">Artist 4</h3>
+                <p class="text-gray-700 mb-4">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam error ducimus accusantium? Tempora fugit, non ad, earum labore, numquam itaque dignissimos incidunt hic dolorum quo quos corporis excepturi exercitationem! Non?
+                </p>
+              </div>
+              <a href="https://open.spotify.com/artist/placeholder" target="_blank" class="btn-primary inline-block mt-2">
+                Listen on Spotify
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- ========== END BANDS SECTION ========== -->
-
-  <!-- ========== TICKETS SECTION ========== -->
-  <section id="tickets" class="py-16 bg-gradient-to-r from-teal-50 to-white" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="section-title">Get Your Tickets!</h2>
-        <p class="section-subtitle max-w-3xl mx-auto">
-          Ticket link coming soon. Make sure to follow our social media for the latest updates and pricing.
-        </p>
-      </div>
-      <!-- Ticket Card Example -->
-      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-        <div class="p-6 border bg-white rounded-lg shadow text-center max-w-sm w-full transition hover:shadow-md" data-aos="zoom-in">
-          <img src="images/ticket-placeholder.jpg" alt="Ticket Placeholder" class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform duration-300" />
-          <h3 class="text-xl font-bold text-teal-700 mb-2">General Admission</h3>
-          <p class="text-gray-700">Placeholder text for pricing.</p>
+    </section>
+    <!-- ========== END BANDS SECTION ========== -->
+    
+    
+    <!-- ========== TICKETS SECTION ========== -->
+    <section id="tickets" class="py-16 bg-gradient-to-r from-teal-50 to-white" data-aos="fade-up" data-aos-duration="1000" aria-labelledby="tickets-title">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="tickets-title" class="section-title">Get Your Tickets!</h2>
+          <p class="section-subtitle max-w-3xl mx-auto">
+            Ticket link coming soon. Make sure to follow our social media for the latest updates and pricing.
+          </p>
+        </div>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+          <div class="p-6 border bg-white rounded-lg shadow text-center max-w-sm w-full transition hover:shadow-md" data-aos="zoom-in">
+            <img src="images/ticket-placeholder.jpg" alt="Ticket Placeholder" class="w-full h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform duration-300" />
+            <h3 class="text-xl font-bold text-teal-700 mb-2">General Admission</h3>
+            <p class="text-gray-700">Placeholder text for pricing.</p>
+          </div>
+        </div>
+        <div class="mt-8 text-center" data-aos="fade-up">
+          <a href="#" class="btn-primary inline-block disabled:opacity-50 cursor-not-allowed">Check Back Soon for Tickets!</a>
         </div>
       </div>
-      <div class="mt-8 text-center" data-aos="fade-up">
-        <a href="#" class="btn-primary inline-block disabled:opacity-50 cursor-not-allowed">Check Back Soon for Tickets!</a>
-      </div>
-    </div>
-  </section>
-  <!-- ========== END TICKETS SECTION ========== -->
+    </section>
+    <!-- ========== END TICKETS SECTION ========== -->
 
+    <!-- ========== LOCATION SECTION ========== -->
+    <section id="location" class="py-16 bg-white" data-aos="fade-up" data-aos-duration="1000" aria-labelledby="location-title">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="location-title" class="section-title">Event Location</h2>
+          <p class="section-subtitle max-w-3xl mx-auto">
+            Wolf Pen Creek Amphitheater<br>
+            1015 Colgate Dr, College Station, TX 77840
+          </p>
+        </div>
+        <div id="map-container" class="grid gap-8 items-center justify-items-center" aria-label="Map showing the location of Wolf Pen Creek Amphitheater">
+          <!-- Google Maps Embed -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.558688650384!2d-96.3040628!3d30.6182086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8646846864c4365f%3A0x949e0cfd43fd3713!2sWolf%20Pen%20Creek%20Amphitheater!5e0!3m2!1sen!2sus!4v1738538053512!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+    <!-- ========== END LOCATION SECTION ========== -->
+
+  </main>
   <!-- ========== FOOTER ========== -->
-  <footer class="bg-teal-900 text-teal-100 py-10 mt-16">
+  <footer class="bg-teal-900 text-teal-100 py-10 mt-16" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- About -->
