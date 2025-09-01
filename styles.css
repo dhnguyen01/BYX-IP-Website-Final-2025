@@ -1,0 +1,159 @@
+/* ===== Theme ===== */
+:root{
+  --primary:#121F50;   /* deep navy */
+  --foam:#cac8bf;      /* beige text */
+  --coral:#a36461;     /* pinkish headline */
+  --sand:#bda179;      /* subtle accent (kept for future) */
+  --orange:#FD6C2E;    /* bright orange */
+  --shadow: rgba(0,0,0,.10);
+}
+
+html,body{height:100%}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--primary);
+  color:var(--foam);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ===== Stage layers ===== */
+.stage{
+  min-height:100dvh;
+  position:relative;
+  overflow:hidden;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+           max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+
+/* Background video (brighter) */
+.bg-video{ position:absolute; inset:0; z-index:-5; background:var(--primary); }
+.bg-video__media{
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter: brightness(1.18) contrast(1.07) saturate(1.1);
+}
+
+/* Light overlays so footage shines */
+.stage::before{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(18,16,27,.01), rgba(18,16,27,.10));
+  z-index:-3;
+}
+.stage::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(to top,
+    rgba(18,16,27,.28) 0%,
+    rgba(18,16,27,.16) 18%,
+    rgba(18,16,27,.08) 34%,
+    transparent 52%);
+  z-index:-2;
+}
+
+/* Subtle grain */
+.grain{
+  position:absolute; inset:-50%;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,.05) 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 35%, rgba(255,255,255,.04) 0 2px, transparent 3px),
+    radial-gradient(circle at 50% 70%, rgba(255,255,255,.035) 0 2px, transparent 3px);
+  background-size:300px 300px, 400px 400px, 500px 500px;
+  mix-blend-mode:overlay; opacity:.04;
+  animation: drift 28s linear infinite; z-index:-1;
+}
+@keyframes drift{to{transform:translate3d(2%,1%,0)}}
+@media (prefers-reduced-motion: reduce){ .grain{animation:none} }
+
+/* ===== Headliner & top-right date ===== */
+.header{
+  position:absolute;
+  top: clamp(10px, 3.5vh, 36px);  /* festival-poster placement */
+  left:50%; transform:translateX(-50%);
+  width:100%;
+  padding: 0;
+}
+.title{
+  margin:0;
+  text-align:center;
+  font-family:"Fugaz One", ui-sans-serif, system-ui, sans-serif;
+  color:var(--primary);
+  white-space:nowrap;                         /* single line */
+  font-size: clamp(2.6rem, 8.9vw, 9.2rem);   /* always fits */
+  line-height:.95;
+  letter-spacing:.015em;
+  text-shadow:
+    0 0 10px rgba(255,255,255,.45),   /* soft white glow */
+    0 .6rem 2.2rem rgba(0,0,0,.34);   /* subtle jet/dark drop */
+}
+/* The date sits right-aligned below the title */
+.dateline{
+  margin: clamp(6px, 1.2vh, 14px) clamp(28px, 6vw, 90px) 0 0;
+  padding: 0;
+  text-align: right;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  letter-spacing: .01em;
+  color: var(--primary);
+  text-shadow: 0 .35rem .9rem rgba(0,0,0,.28);
+}
+.dateline time{ font-variant-numeric: lining-nums; }
+
+/* Instagram footer */
+.social{
+  position:absolute;
+  left:50%; transform:translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom) + 14px);
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:"Lato", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight:500;
+  font-size: clamp(.9rem, 1.6vw, 1rem);
+  color: rgba(202,200,191,.92);                 /* foam */
+  text-decoration:none;
+  text-shadow: 0 .25rem .7rem rgba(0,0,0,.28);
+  transition: color .2s ease, opacity .2s ease;
+}
+.social__icon{
+  width: 18px; height: 18px;
+  fill: currentColor; opacity:.95;
+}
+.social:hover{ color: var(--orange); }          /* subtle brand pop on hover */
+.social:active{ opacity:.85; }
+
+.footer-center{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom) + 18px);
+  width: 100%;
+  text-align: center;
+  pointer-events: auto;
+}
+
+/* DATE | INSTAGRAM — Fugaz One, all caps, with a soft white glow */
+.footline{
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(.6rem, 1.8vw, 1.25rem);
+  font-family: "Fugaz One", ui-sans-serif, system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .035em;
+  color: var(--foam);
+  font-size: clamp(1.05rem, 2.2vw, 1.6rem);
+  white-space: nowrap;
+  text-shadow:
+    0 0 8px rgba(255,255,255,.45),    /* white glow */
+    0 .3rem .9rem rgba(0,0,0,.28);    /* dark depth */
+}
+
+.footline .pipe{ opacity:.9 }
+.footline .insta{
+  color: inherit;
+  text-decoration: none;
+}
+.footline .insta:hover{
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
